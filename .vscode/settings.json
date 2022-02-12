@@ -1,0 +1,23 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pycodestyleEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 150
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "editor.formatOnSave": true,
+  "python.linting.flake8Args": ["--max-line-length", "150"],
+  "python.formatting.blackArgs": ["--line-length=150", "--target-version=py39"],
+  "python.analysis.typeCheckingMode": "basic"
+}
