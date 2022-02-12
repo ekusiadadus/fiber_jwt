@@ -20,7 +20,10 @@ function App() {
     <BrowserRouter>
       <div className="page-content">
         <Routes>
-          <Route path="/" element={<HomePage name={name} />} />
+          <Route
+            path="/"
+            element={<HomePage name={name} setName={setName} />}
+          />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
         </Routes>
