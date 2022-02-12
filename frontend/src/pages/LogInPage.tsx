@@ -2,14 +2,16 @@ import { SyntheticEvent, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-
+import { useNavigate } from "react-router";
 const LogInPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/login", {
+    await fetch("http://127.0.0.1:8000/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -18,8 +20,12 @@ const LogInPage = () => {
         password,
       }),
     });
-    console.log(await response.json());
+    setRedirect(true);
   };
+
+  if (redirect) {
+    navigate("/");
+  }
   return (
     <Container className="mt-5 mb-5" style={{ backgroundColor: "#fff" }}>
       <main className="form-signin">
