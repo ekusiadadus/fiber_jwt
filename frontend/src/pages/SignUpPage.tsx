@@ -2,15 +2,18 @@ import { SyntheticEvent, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/register", {
+    await fetch("http://127.0.0.1:8000/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -19,10 +22,12 @@ const SignUpPage = () => {
         password,
       }),
     });
-
-    const content = await response.json();
-    console.log(content);
+    setRedirect(true);
   };
+
+  if (redirect) {
+    navigate("/login");
+  }
 
   return (
     <Container className="mt-5 mb-5" style={{ backgroundColor: "#fff" }}>
