@@ -2,6 +2,7 @@ package main
 
 import (
 	"go_fiber/app/database"
+	"go_fiber/app/routes"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -9,10 +10,6 @@ import (
 func main() {
 	database.Connect()
 	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World 👋!")
-	})
-
+	routes.Setup(app)
 	app.Listen(":3000")
 }
