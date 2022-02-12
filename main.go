@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	_, err := gorm.Open(mysql.Open("test:test@127.0.0.1/go_jwt"), &gorm.Config{})
+	_, err := gorm.Open(mysql.Open("root:root@tcp(localhost:3306)/go_jwt"), &gorm.Config{})
 	if err != nil {
 		panic("Could not connect to the database")
 	}
